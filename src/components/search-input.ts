@@ -43,7 +43,7 @@ export class SearchInput extends HTMLElement {
     this.controller?.abort();
     this.controller = new AbortController();
     this.dispatchEvent(
-      new CustomEvent('loading', { detail: true, bubbles: true, composed: true })
+      new CustomEvent('loading', { detail: true, bubbles: true })
     );
     fetch(`https://api.github.com/users/${userId}`, { signal: this.controller.signal })
       .then((res) => {
@@ -52,18 +52,18 @@ export class SearchInput extends HTMLElement {
       })
       .then((detail) => {
         this.dispatchEvent(
-          new CustomEvent('user-info', { detail, bubbles: true, composed: true })
+          new CustomEvent('user-info', { detail, bubbles: true })
         );
       })
       .catch((err: Error) => {
         if (err.name === 'AbortError') return;
         this.dispatchEvent(
-          new CustomEvent('error', { detail: err.message, bubbles: true, composed: true })
+          new CustomEvent('error', { detail: err.message, bubbles: true })
         );
       })
       .finally(() => {
         this.dispatchEvent(
-          new CustomEvent('loading', { detail: false, bubbles: true, composed: true })
+          new CustomEvent('loading', { detail: false, bubbles: true })
         );
       });
   }

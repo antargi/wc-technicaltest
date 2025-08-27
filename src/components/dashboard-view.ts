@@ -77,7 +77,7 @@ export class DashboardView extends HTMLElement {
         this.updateUI();
       }
     });
-    finder.addEventListener('user-info', (event: Event) => {
+    this.addEventListener('user-info', (event: Event) => {
       if (event instanceof CustomEvent) {
         this.state = 'success';
         this.payload = UserAdapter.convert(event.detail);
