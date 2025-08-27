@@ -1,0 +1,82 @@
+:root {
+  --color-dark: #1e1e2f;         
+  --color-bg-primary: #0f172a;      
+  --color-bg-secondary: #1e293b;   
+  --color-accent: #3b82f6;          
+  --color-accent-light: #3b82f65e;  
+  --color-accent-dark: #1d4ed8;    
+  --color-light: #55AAFFFF;          
+  --color-background: #0f172a;     
+  --color-white: #ffff;     
+}
+
+html {
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-primary),
+    var(--color-bg-secondary)
+  );
+
+  body {
+    font-family: 'Space Grotesk', 'Roboto', Arial, sans-serif;
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 3rem;
+
+      h1 {
+        text-align: center;
+        color: var(--color-light);
+      }
+
+      input {
+        border: var(--color-accent-light) 0.25rem solid;
+        border-radius: 0.25rem;
+        padding: 0.25rem;
+        width: 20rem;
+        box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.08);
+        margin-bottom: 1.5rem;
+
+        &:focus {
+          border-color: var(--color-accent);
+          box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
+
+    @media screen and (max-width: 27rem) {
+      #app {
+        padding: 1.5rem;
+
+        input {
+          width: 100%;
+        }
+
+        info-card {
+          width: 100%;
+          --card-width: 100%;
+          --card-padding: 0;
+          --card-image-size: 3.75rem;
+        }
+      }
+    }
+
+    @media screen and (orientation: landscape) {
+      #app {
+        h1 {
+          margin: 0.5rem auto 0.5rem auto;
+        }
+
+        padding: 0;
+        gap: 0.5rem;
+
+        info-card {
+          --card-padding: 1rem;
+        }
+      }
+    }
+  }
+}
